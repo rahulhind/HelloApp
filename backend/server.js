@@ -1,8 +1,14 @@
 const express = require("express");
-const app = express();
+// const app = express();
 const { chats } = require("./data/data");
+const connectDB = require("./config/db");
 const dotenv = require("dotenv");
+
 dotenv.config();
+connectDB();
+
+const app = express();
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API is Running Successfully");
 });
